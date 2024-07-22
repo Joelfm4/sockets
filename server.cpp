@@ -34,6 +34,7 @@ int main(){
     }
 
     WSACleanup();
+    closesocket(serverSocket);
 
     return 0;
 }
