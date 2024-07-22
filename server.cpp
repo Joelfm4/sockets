@@ -10,6 +10,8 @@ int main(){
     int wsaerr;
     WORD wVersionRequested = MAKEWORD(2, 2); // The MAKEWORD(2, 2) macro call creates a 16-bit value representing the version of Winsock that the program is requesting (2.2 in this case)
 
+
+
     //  Initialize the Winsock library
     wsaerr = WSAStartup(wVersionRequested, &wsaData);
 
@@ -20,6 +22,18 @@ int main(){
         std::cout << "The status: " << wsaData.szSystemStatus << "\n";
     }
 
+    SOCKET serverSocket = INVALID_SOCKET;
+    serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); // (adress family, SOCK_STREAM for TCP or SOCK_DGRAM for UTP, int protocol)
+
+    if(serverSocket == INVALID_SOCKET){
+        std::cout << "Error at socket(): " << WSAGetLastError() << "\n";
+        WSACleanup();
+        return 0;
+    }else{
+        std::cout << "socket() is OK!" << "\n";
+    }
+
+    WSACleanup();
 
     return 0;
 }
