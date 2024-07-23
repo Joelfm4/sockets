@@ -12,6 +12,7 @@ The Open Systems Interconnect (OSI) is a network reference model that presents a
 
 ![OSI](images/WinsockNetworkModel.jpg)
 
+Note how the upper layers of the OSI model are referred to as Windows Sockets Application, while the lower layers form the Network System. The WinSock API (WSA) sits between the two. WSA provides access to the Network System, and the WinSock Applications uses WSA services to send and receive information.
 
 ![OSI](images/osuLayer.png)
 
