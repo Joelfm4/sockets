@@ -1,9 +1,7 @@
-#define _WIN32_WINNT 0x0600  // Windows Vista or later
 #include <iostream>
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #pragma comment(lib, "ws2_32.lib")
-
 
 
 int main(){
@@ -37,9 +35,9 @@ int main(){
     sockaddr_in service;
     service.sin_family = AF_INET;
 
-    InetPton    (AF_INET, "127.0.0.1", &service.sin_addr);
+    InetPton(AF_INET, "127.0.0.1", &service.sin_addr);
 
-    int port = 8080;
+    int port = 5555;
     service.sin_port = htons(port);
 
 
