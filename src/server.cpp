@@ -37,7 +37,7 @@ int main(){
 
     InetPton(AF_INET, "127.0.0.1", &service.sin_addr);
 
-    int port = 5555;
+    int port = 55555;
     service.sin_port = htons(port);
 
 
@@ -50,6 +50,13 @@ int main(){
         std::cout << "bind() is OK!\n";
     }
 
+
+    if (listen(serverSocket, 1) == SOCKET_ERROR){ // listen(unconnected socket , maximum number of connections)
+        std::cout << "listen(): Error listening on socket" << WSAGetLastError() << "\n";
+    }
+    else {
+        std::cout << "listen() is OK, I'm waiting for connections... \n";
+    }
 
 
     WSACleanup();
