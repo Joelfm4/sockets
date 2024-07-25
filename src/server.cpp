@@ -50,12 +50,21 @@ int main(){
         std::cout << "bind() is OK!\n";
     }
 
-
+    // Listen
     if (listen(serverSocket, 1) == SOCKET_ERROR){ // listen(unconnected socket , maximum number of connections)
         std::cout << "listen(): Error listening on socket" << WSAGetLastError() << "\n";
     }
     else {
         std::cout << "listen() is OK, I'm waiting for connections... \n";
+    }
+
+    // Accept
+    SOCKET acceptSocket;
+    acceptSocket = accept(serverSocket, NULL, NULL);
+    if (acceptSocket == INVALID_SOCKET) {
+        std::cout << "Accept failed: " << WSAGetLastError() << "\n";
+        WSACleanup();
+        return -1;
     }
 
 
