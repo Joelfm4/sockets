@@ -5,8 +5,6 @@
 
 
 
-
-
 int main() {
     WSADATA wsaData;  // WSADATA is a structure that contains information about the Windows Sockets implementation. It will be filled with data by the WSAStartup function.
     int wsaerr;
@@ -51,7 +49,21 @@ int main() {
         std::cout << "Client: Can start sending and receiving data... \n";
     }
 
+    // Send Data
+    char buffer[200];
 
+    std::cout << "Enter your message: ";
+    std::cin.getline(buffer, 200);
+
+    int byteCount = send(clientSocket, buffer, 200, 0);
+
+    if (byteCount == SOCKET_ERROR) {
+        std::cout << "Server send error: " << WSAGetLastError() << "\n";
+        return -1;
+    }
+    else {
+        std::cout << "Server sent bytes: " << byteCount << "\n";
+    }
 
 
 	return 0;
