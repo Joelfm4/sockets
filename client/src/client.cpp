@@ -18,7 +18,7 @@ int main() {
     }
     else {
         std::cout << "The Winsock dll found!\n";
-        std::cout << "The status: " << wsaData.szSystemStatus << "\n";
+        std::cout << "The status: " << wsaData.szSystemStatus << '\n';
     }
 
     // Creating the socket
@@ -26,12 +26,12 @@ int main() {
     clientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); // (adress family, SOCK_STREAM for TCP or SOCK_DGRAM for UTP, int protocol) - Return an object in tocket format
 
     if (clientSocket == INVALID_SOCKET) {
-        std::cout << "Error at socket(): " << WSAGetLastError() << "\n";
+        std::cout << "Error at socket(): " << WSAGetLastError() << '\n';
         WSACleanup();
         return 1;
     }
     else {
-        std::cout << "socket() is OK!" << "\n";
+        std::cout << "socket() is OK!" << '\n';
     }
 
     // Connect
@@ -58,11 +58,11 @@ int main() {
     int byteCount = send(clientSocket, buffer, 200, 0);
 
     if (byteCount == SOCKET_ERROR) {
-        std::cout << "Server send error: " << WSAGetLastError() << "\n";
+        std::cout << "Server send error: " << WSAGetLastError() << '\n';
         return -1;
     }
     else {
-        std::cout << "Server sent bytes: " << byteCount << "\n";
+        std::cout << "Server sent bytes: " << byteCount << '\n';
     }
 
 
