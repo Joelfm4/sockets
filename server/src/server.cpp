@@ -66,6 +66,16 @@ int main(){
         return -1;
     }
 
+    // Receiving Data
+    char receiveBuffer[200] = "";
+    int byteCount = recv(acceptSocket, receiveBuffer, 200, 0);
+    if (byteCount < 0) {
+        std::cout << "Client: Error" << WSAGetLastError() << "\n";
+        return 0;
+    }
+    else {
+        std::cout << "Received data: " << receiveBuffer << "\n";
+    }
 
     WSACleanup();
     closesocket(serverSocket);
