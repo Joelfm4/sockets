@@ -16,7 +16,7 @@ int main(){
         std::cout << "The Winsock dll not found! \n";
     }else{
         std::cout << "The Winsock dll found!\n";
-        std::cout << "The status: " << wsaData.szSystemStatus << "\n";
+        std::cout << "The status: " << wsaData.szSystemStatus << '\n';
     }
 
     // Creating the socket
@@ -24,11 +24,11 @@ int main(){
     serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); // (adress family, SOCK_STREAM for TCP or SOCK_DGRAM for UTP, int protocol) - Return an object in tocket format
 
     if(serverSocket == INVALID_SOCKET){
-        std::cout << "Error at socket(): " << WSAGetLastError() << "\n";
+        std::cout << "Error at socket(): " << WSAGetLastError() << '\n';
         WSACleanup();
         return 1;
     }else{
-        std::cout << "socket() is OK!" << "\n";
+        std::cout << "socket() is OK!" << '\n';
     }
 
     // Bind the socket
@@ -41,7 +41,7 @@ int main(){
 
 
     if (bind(serverSocket, (SOCKADDR*)&service, sizeof(service)) == SOCKET_ERROR){
-        std::cout << "bind() failed: " << WSAGetLastError() << "\n";
+        std::cout << "bind() failed: " << WSAGetLastError() << '\n';
         closesocket(serverSocket);
         WSACleanup();
         return 1;
@@ -51,7 +51,7 @@ int main(){
 
     // Listen
     if (listen(serverSocket, 1) == SOCKET_ERROR){ // listen(unconnected socket , maximum number of connections)
-        std::cout << "listen(): Error listening on socket" << WSAGetLastError() << "\n";
+        std::cout << "listen(): Error listening on socket" << WSAGetLastError() << '\n';
     }
     else {
         std::cout << "listen() is OK, I'm waiting for connections... \n";
@@ -61,7 +61,7 @@ int main(){
     SOCKET acceptSocket;
     acceptSocket = accept(serverSocket, NULL, NULL);
     if (acceptSocket == INVALID_SOCKET) {
-        std::cout << "Accept failed: " << WSAGetLastError() << "\n";
+        std::cout << "Accept failed: " << WSAGetLastError() << '\n';
         WSACleanup();
         return -1;
     }
@@ -70,11 +70,11 @@ int main(){
     char receiveBuffer[200] = "";
     int byteCount = recv(acceptSocket, receiveBuffer, 200, 0);
     if (byteCount < 0) {
-        std::cout << "Client: Error" << WSAGetLastError() << "\n";
+        std::cout << "Client: Error" << WSAGetLastError() << '\n';
         return 0;
     }
     else {
-        std::cout << "Received data: " << receiveBuffer << "\n";
+        std::cout << "Received data: " << receiveBuffer << '\n';
     }
 
     WSACleanup();
