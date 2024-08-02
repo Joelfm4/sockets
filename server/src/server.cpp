@@ -5,7 +5,7 @@
 
 
 int main(){
-    WSADATA wsaData;  // WSADATA is a structure that contains information about the Windows Sockets implementation. It will be filled with data by the WSAStartup function.
+    WSADATA wsaData;                         // WSADATA is a structure that contains information about the Windows Sockets implementation. It will be filled with data by the WSAStartup function.
     int wsaerr;
     WORD wVersionRequested = MAKEWORD(2, 2); // The MAKEWORD(2, 2) macro call creates a 16-bit value representing the version of Winsock that the program is requesting (2.2 in this case)
 
@@ -67,14 +67,14 @@ int main(){
     }
 
     // Receiving Data
-    char receiveBuffer[200] = "";
+    char receiveBuffer[200];
     int byteCount = recv(acceptSocket, receiveBuffer, 200, 0);
-    if (byteCount < 0) {
-        std::cout << "Client: Error" << WSAGetLastError() << '\n';
-        return 0;
+
+    if (byteCount > 0) {
+        std::cout << "Received data: " << receiveBuffer << '\n';
     }
     else {
-        std::cout << "Received data: " << receiveBuffer << '\n';
+        WSACleanup();
     }
 
     WSACleanup();
@@ -83,7 +83,3 @@ int main(){
     return 0;
 }
 
-
-// cmake .. -G "MinGW Makefiles"
-
-// g++ -Wall -Wextra -g3 server.cpp -o output\server.exe -lws2_32

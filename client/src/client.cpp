@@ -57,14 +57,16 @@ int main() {
 
     int byteCount = send(clientSocket, buffer, 200, 0);
 
-    if (byteCount == SOCKET_ERROR) {
-        std::cout << "Server send error: " << WSAGetLastError() << '\n';
-        return -1;
+    if (byteCount > 0) {
+        std::cout << "Message sent: " << buffer << '\n';
+        
     }
     else {
-        std::cout << "Server sent bytes: " << byteCount << '\n';
+        WSACleanup();
+
     }
 
-
+    system("pause");
+    WSACleanup();
 	return 0;
 }
