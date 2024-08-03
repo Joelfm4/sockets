@@ -20,7 +20,16 @@ OSI - TEMPLATE
 
 SOCKETS - EXPLATION
 
-How will work
+# Socket Connection Steps
+1. **Step 1** - Create server and client sockets.
+2. **Step 2** - The client socket requests a connection to the server socket.
+3. **Step 3** - The server creates a new socket to handle the client connection, while the original server socket continues to listen for new incoming requests.
+
+
+
+
+
+![Working](images/draw.png)
 
 THE SERVER CODE EXPLATION - Each line
 
