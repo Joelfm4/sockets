@@ -1,0 +1,3 @@
+D:/Projetos/sockets/client/build/CMakeFiles/client.dir
+D:/Projetos/sockets/client/build/CMakeFiles/ALL_BUILD.dir
+D:/Projetos/sockets/client/build/CMakeFiles/ZERO_CHECK.dir

@@ -6,9 +6,9 @@
 
 
 int main() {
-    WSADATA wsaData;  // WSADATA is a structure that contains information about the Windows Sockets implementation. It will be filled with data by the WSAStartup function.
+    WSADATA wsaData;
     int wsaerr;
-    WORD wVersionRequested = MAKEWORD(2, 2); // The MAKEWORD(2, 2) macro call creates a 16-bit value representing the version of Winsock that the program is requesting (2.2 in this case)
+    WORD wVersionRequested = MAKEWORD(2, 2);
 
     //  Initialize the Winsock library
     wsaerr = WSAStartup(wVersionRequested, &wsaData);
